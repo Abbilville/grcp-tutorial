@@ -18,7 +18,6 @@ Ketika menghadapi streaming bidirectional dalam Rust gRPC, khususnya dalam skena
 
 4. **What are the advantages and disadvantages of using the tokio_stream::wrappers::ReceiverStream for streaming responses in Rust gRPC services?** <br>
 advantages menggunakan <code>tokio_stream::wrappers::ReceiverStream</code> untuk streaming respons dalam layanan Rust gRPC meliputi kompatibilitas dengan Tokio yang memungkinkan integrasi yang mulus dan optimal antara ReceiverStream dan Tokio. Selain itu, kemampuan ReceiverStream untuk mengonsumsi data secara asinkron memungkinkan sinkronisasi yang efisien dalam penanganan aliran data. Keuntungan lainnya adalah pengurangan kompleksitas kode dan percepatan dalam pengembangan aplikasi, yang pada gilirannya dapat meningkatkan maintainability aplikasi. <br>
-
 Namun, terdapat beberapa disadvantages yang perlu diperhatikan. Salah satunya adalah bahwa ReceiverStream tidak terintegrasi secara langsung dengan gRPC, yang dapat mengakibatkan kesulitan dalam mengintegrasikannya dengan layanan gRPC. Meskipun integrasinya dengan Tokio berjalan lancar, memerlukan upaya tambahan untuk mengintegrasikannya dengan gRPC. Selain itu, ada keterbatasan fungsionalitas tertentu yang perlu dipertimbangkan karena tidak terintegrasi secara langsung dengan gRPC. <br>
 
 5. **In what ways could the Rust gRPC code be structured to facilitate code reuse and modularity, promoting maintainability and extensibility over time?** <br>
@@ -36,14 +35,10 @@ Namun, terdapat beberapa Disadvantages dalam penggunaan HTTP/2. Salah satunya ad
 
 9. **How does the request-response model of REST APIs contrast with the bidirectional streaming capabilities of gRPC in terms of real-time communication and responsiveness?** <br>
 REST API menggunakan model permintaan-respons yang cocok untuk interaksi klien-server tradisional, namun tidak optimal untuk komunikasi real-time karena terbatas pada satu arah. Sebaliknya, gRPC dengan streaming bidirectional sangat efisien untuk komunikasi real-time karena memungkinkan pertukaran data instan dan responsif dengan latency rendah. <br>
-
 Sementara REST API memiliki overhead pada setiap permintaan HTTP, gRPC dengan streaming bidirectional memungkinkan interaksi real-time dan full-duplex, meskipun lebih kompleks dalam implementasinya dan dapat memengaruhi maintainability aplikasi. <br>
-
 Pemilihan antara REST API dan gRPC harus mempertimbangkan latensi, kompleksitas, dan kebutuhan interaksi real-time. gRPC cocok untuk interaksi real-time, sementara REST API lebih sesuai untuk antarmuka sederhana dan konsisten. <br>
 
 10. **What are the implications of the schema-based approach of gRPC, using Protocol Buffers, compared to the more flexible, schema-less nature of JSON in REST API payloads?** <br>
 Menggunakan gRPC dengan Protocol Buffers menghadirkan keuntungan dalam mendefinisikan skema dan tipe data yang ketat, meningkatkan keamanan data, dan mengurangi risiko kesalahan karena definisinya yang ketat. Selain itu, penggunaan format biner dapat mengurangi payload dan meningkatkan kinerja transfer data. <br>
-
 Di sisi lain, JSON memiliki fleksibilitas yang lebih besar dalam struktur data, cocok untuk tipe data yang dinamis. Meskipun demikian, kekurangan JSON adalah kurangnya keamanan dan kemungkinan kesalahan dalam definisi skema. <br>
-
 Kelebihan JSON termasuk kemudahan dalam readability dan interoperabilitas lintas bahasa pemrograman dan platform karena sifatnya yang universal. Pemilihan antara gRPC dengan Protocol Buffers dan JSON harus mempertimbangkan prioritas aplikasi dan kebutuhan akan ketatnya definisi skema dan keamanan data. <br>
